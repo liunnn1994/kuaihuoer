@@ -1,0 +1,52 @@
+{
+  "name": "kuaihuo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "cz": "git-cz",
+    "dev": "nuxt dev",
+    "format": "prettier --ignore-unknown --write",
+    "generate": "nuxt generate",
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "nuxt prepare",
+    "lint:eslint": "eslint --fix",
+    "lint:oxlint": "oxlint --fix",
+    "prepare": "pnpm dlx simple-git-hooks",
+    "preview": "nuxt preview",
+    "semantic-release": "semantic-release"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm dlx lint-staged",
+    "commit-msg": "pnpm dlx commitlint -e"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "^0.3.13",
+    "nuxt": "^3.12.2",
+    "vue": "^3.4.31"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@nuxt/kit": "^3.12.2",
+    "@nuxt/schema": "^3.12.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-oxlint": "^0.5.0",
+    "git-cz": "^4.9.0",
+    "oxlint": "^0.5.1",
+    "prettier": "^3.3.2",
+    "prettier-plugin-packagejson": "^2.5.0",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "semantic-release": "^23.1.1",
+    "simple-git-hooks": "^2.11.1"
+  },
+  "packageManager": "pnpm@9.4.0",
+  "volta": {
+    "node": "22.3.0"
+  }
+}
