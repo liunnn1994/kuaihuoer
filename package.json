@@ -4,7 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "analyze": "pnpm dlx nuxi analyze --no-serve",
+    "archive": "node ./scripts/archiveOutput.js",
     "build": "nuxt build",
+    "build:beta-archive": "run-s build archive",
+    "build:canary-archive": "run-s build archive",
+    "build:stable-archive": "run-s build archive",
     "cz": "git-cz",
     "dev": "nuxt dev",
     "format": "prettier --ignore-unknown --write",
@@ -34,11 +39,14 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.7",
     "@semantic-release/npm": "^12.0.1",
+    "archiver": "^7.0.1",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.56.0",
     "eslint-plugin-oxlint": "^0.5.0",
     "git-cz": "^4.9.0",
+    "npm-run-all2": "^6.2.0",
     "oxlint": "^0.5.1",
     "postcss": "^8.4.39",
     "prettier": "^3.3.2",
@@ -47,7 +55,8 @@
     "sass": "^1.77.6",
     "semantic-release": "^23.1.1",
     "simple-git-hooks": "^2.11.1",
-    "tailwindcss": "^3.4.4"
+    "tailwindcss": "^3.4.4",
+    "zx": "^8.1.3"
   },
   "packageManager": "pnpm@9.4.0",
   "volta": {
