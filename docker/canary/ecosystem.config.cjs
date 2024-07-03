@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
   apps: [
     {
-      name: 'kuaihuo-canary',
+      name: 'kuaihuoer-canary',
       cwd: './server',
       script: 'index.mjs',
       instances: 4,

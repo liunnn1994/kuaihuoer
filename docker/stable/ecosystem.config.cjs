@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
   apps: [
     {
-      name: 'kuaihuo-stable',
+      name: 'kuaihuoer-stable',
       cwd: './server',
       script: 'index.mjs',
       instances: 4,
