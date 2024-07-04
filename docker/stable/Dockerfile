@@ -1,41 +1,27 @@
-FROM node:20-alpine AS base
+FROM node:lts AS base
 
-# 安装依赖阶段
-FROM base AS deps
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 
-# 工作目录
+COPY . /app
 WORKDIR /app
-
-COPY package.json pnpm-lock.yaml .npmrc ./
-# 安装依赖
-RUN set -eux; \
-    corepack enable; \
-    pnpm install;
 
 # 编译阶段
-FROM base AS builder
-
-WORKDIR /app
-
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-
+FROM base AS build
 RUN set -eux; \
-    corepack enable; \
+    pnpm i -f --frozen-lockfile; \
     pnpm run build-stable;
 
-# 运行阶段
-FROM base AS runner
-WORKDIR /app
-
-COPY --from=builder /app/.output .
-COPY --from=builder /app/deploy/stable/entrypoint.sh ./entrypoint.sh
-COPY --from=builder /app/deploy/stable/ecosystem.config.cjs ./ecosystem.config.cjs
-COPY --from=builder /app/.env ./.env
+FROM base
+COPY --from=build /app/.output /app/
+COPY --from=build /app/docker/stable/entrypoint.sh /app/entrypoint.sh
+COPY --from=build /app/docker/stable/ecosystem.config.cjs /app/ecosystem.config.cjs
+# 后续通过自动化脚本生成
+# COPY --from=build /app/.env /app/.env
 
 RUN set -eux; \
-    npm install -g pm2; \
-    npm install dotenv; \
+    npm install -g pm2 dotenv --registry=https://registry.npmmirror.com; \
     chmod +x ./entrypoint.sh;
 
 EXPOSE 80

@@ -1,4 +1,8 @@
-require('dotenv').config();
+const { execSync } = require('child_process');
+// get root folder of global node modules
+const npmRoot = execSync('npm root -g').toString().trim();
+
+require(`${npmRoot}/dotenv`).config();
 
 module.exports = {
   apps: [
