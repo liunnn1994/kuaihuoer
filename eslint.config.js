@@ -2,6 +2,5 @@
 import withNuxt from './.nuxt/eslint.config.mjs';
 
 export default withNuxt({
-  ignores: ['scripts/**/*'],
+  ignores: ['scripts/**/*', 'components/ui/**/*'],
 });
-// Your custom configs here
