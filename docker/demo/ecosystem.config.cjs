@@ -7,7 +7,7 @@ require(`${npmRoot}/dotenv`).config();
 module.exports = {
   apps: [
     {
-      name: 'kuaihuoer-canary',
+      name: 'kuaihuoer-demo',
       cwd: './server',
       script: 'index.mjs',
       instances: 4,

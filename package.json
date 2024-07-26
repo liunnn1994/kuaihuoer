@@ -6,11 +6,9 @@
   "scripts": {
     "analyze": "pnpm dlx nuxi analyze --no-serve",
     "archive": "node ./scripts/archiveOutput.js",
-    "build-canary": "nuxt build",
-    "build-beta": "nuxt build",
+    "build-demo": "nuxt build",
     "build-stable": "nuxt build",
-    "build:beta-archive": "run-s build-beta archive",
-    "build:canary-archive": "run-s build-canary archive",
+    "build:demo-archive": "run-s build-demo archive",
     "build:stable-archive": "run-s build-stable archive",
     "cz": "git-cz",
     "dev": "nuxt dev",

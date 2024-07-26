@@ -18,11 +18,8 @@ async function main() {
 
 async function deploy() {
   switch (branch) {
-    case 'canary':
-      await deployCanary();
-      break;
-    case 'beta':
-      await deployBeta();
+    case 'demo':
+      await deployDemo();
       break;
     case 'stable':
       await deployStable();
@@ -38,11 +35,7 @@ async function buildAndArchive() {
   console.log(new Date().toLocaleString(), `${pkgName} v${version} 打包完成`);
 }
 
-async function deployCanary() {
-  console.log(new Date().toLocaleString(), `${pkgName} v${version} 部署中...`);
-}
-
-async function deployBeta() {
+async function deployDemo() {
   console.log(new Date().toLocaleString(), `${pkgName} v${version} 部署中...`);
 }
 

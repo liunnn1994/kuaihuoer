@@ -11,12 +11,12 @@ WORKDIR /app
 FROM base AS build
 RUN set -eux; \
     pnpm i -f --frozen-lockfile; \
-    pnpm run build-canary;
+    pnpm run build-demo;
 
 FROM base
 COPY --from=build /app/.output /app/
-COPY --from=build /app/docker/canary/entrypoint.sh /app/entrypoint.sh
-COPY --from=build /app/docker/canary/ecosystem.config.cjs /app/ecosystem.config.cjs
+COPY --from=build /app/docker/demo/entrypoint.sh /app/entrypoint.sh
+COPY --from=build /app/docker/demo/ecosystem.config.cjs /app/ecosystem.config.cjs
 # 后续通过自动化脚本生成
 # COPY --from=build /app/.env /app/.env
 

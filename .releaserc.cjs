@@ -12,15 +12,7 @@ const config = {
   branches: [
     stableBranch,
     {
-      name: 'beta',
-      prerelease: true,
-    },
-    {
-      name: 'canary',
-      prerelease: true,
-    },
-    {
-      name: 'sync-vben',
+      name: 'development',
       prerelease: true,
     },
   ],
